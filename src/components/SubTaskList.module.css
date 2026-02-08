@@ -1,0 +1,149 @@
+.container {
+    padding: 0.75rem 0 0.5rem 2.5rem;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 0.75rem;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+
+.item:hover {
+    background: var(--surface-hover);
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+    color: white;
+}
+
+.checkbox:hover {
+    border-color: var(--primary);
+}
+
+.checkbox.checked {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.title {
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.title.completed {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.deleteButton {
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+
+.item:hover .deleteButton {
+    opacity: 1;
+}
+
+.deleteButton:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.addButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+    width: 100%;
+}
+
+.addButton:hover {
+    background: var(--surface-hover);
+    color: var(--primary);
+}
+
+.addForm {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.submitButton {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+    box-shadow: var(--shadow-glow);
+}
+
+.submitButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

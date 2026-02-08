@@ -1,0 +1,131 @@
+.calendar {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.monthYear {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.navButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navButton:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.weekDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.weekDay {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.25rem;
+}
+
+.weekDay.sunday {
+    color: #f87171;
+}
+
+.weekDay.saturday {
+    color: #60a5fa;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.empty {
+    aspect-ratio: 1;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+.day:hover {
+    background: var(--surface-hover);
+}
+
+.day.sunday {
+    color: #f87171;
+}
+
+.day.saturday {
+    color: #60a5fa;
+}
+
+.day.today {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.day.selected {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.day.selected.sunday,
+.day.selected.saturday {
+    color: white;
+}
+
+.dayNumber {
+    line-height: 1;
+}
+
+.todoIndicator {
+    font-size: 0.4rem;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.day.selected .todoIndicator {
+    color: rgba(255, 255, 255, 0.8);
+}

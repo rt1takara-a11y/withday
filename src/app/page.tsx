@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Plus, Bell } from 'lucide-react';
+import { Plus, Bell, ChevronDown, ChevronUp } from 'lucide-react';
 import { useTodos } from '@/hooks/useTodos';
 import { usePWA } from '@/hooks/usePWA';
 import { useNotifications } from '@/hooks/useNotifications';
 import Header from '@/components/Header';
-import Sidebar from '@/components/Sidebar';
+import Calendar from '@/components/Calendar';
 import TodoList from '@/components/TodoList';
 import AddTodoForm from '@/components/AddTodoForm';
 import NotificationSettings from '@/components/NotificationSettings';
@@ -35,6 +35,7 @@ export default function Home() {
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isNotificationSettingsOpen, setIsNotificationSettingsOpen] = useState(false);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const isPastDate = selectedDate < today;
   const canAdd = selectedDate === today || selectedDate === tomorrow;
@@ -68,14 +69,8 @@ export default function Home() {
         onSelectTomorrow={() => setSelectedDate(tomorrow)}
       />
 
-      <div className={styles.main}>
-        <Sidebar
-          selectedDate={selectedDate}
-          onSelectDate={setSelectedDate}
-          getTodoCount={getTodoCountByDate}
-        />
-
-        <main className={styles.content}>
+      <main className={styles.main}>
+        <div className={styles.todoArea}>
           <TodoList
             todos={todos}
             onToggleTodo={toggleTodoCompleted}
@@ -85,8 +80,29 @@ export default function Home() {
             onDeleteSubTask={deleteSubTask}
             isPastDate={isPastDate}
           />
-        </main>
-      </div>
+        </div>
+
+        {/* カレンダー（下部に折りたたみ式） */}
+        <div className={styles.calendarSection}>
+          <button
+            className={styles.calendarToggle}
+            onClick={() => setIsCalendarOpen(!isCalendarOpen)}
+          >
+            <span>📅 カレンダー</span>
+            {isCalendarOpen ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
+          </button>
+
+          {isCalendarOpen && (
+            <div className={styles.calendarWrapper}>
+              <Calendar
+                selectedDate={selectedDate}
+                onSelectDate={setSelectedDate}
+                getTodoCount={getTodoCountByDate}
+              />
+            </div>
+          )}
+        </div>
+      </main>
 
       {/* 通知設定ボタン */}
       <button
